@@ -7,6 +7,11 @@
       width: 60%;
       margin: 0 auto;
   }
+  .task__edit {
+    text-align: right;
+    padding-bottom: 10px;
+  }
+
   table {
       width: 100%;
       border-collapse: collapse;
@@ -50,4 +55,19 @@
       <td>{{ $task->updated_at->format('Y年m月d日 H:i') }}</td>
     </tr>
   </table>
+  
+  <div class="link">
+    <div class="link__back">
+        <a href="/">戻る</a>
+    </div>
+    <div class="link__edit">
+        <a href="{{ route('tasks.edit', ['id' => $task->id]) }}">編集する</a>
+    </div>
+    <div class="link__delete">
+        <form action="{{ route('tasks.delete', ['id' => $task->id]) }}" method="POST" name="deleteForm">
+            @csrf
+                <button type="submit">削除</button>
+        </form>
+    </div>
+</div>
 </div>
